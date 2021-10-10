@@ -1,4 +1,5 @@
-from pizza import Pizza
+from pizza import *
+
 
 # This function shows a limitation on tool-assisted
 # refactoring in a dynamic language like Python.
@@ -16,7 +17,7 @@ def print_pizza(pizza):
     # "small pizza with muschroom" or "small plain pizza"
     description = pizza.size
     if pizza.toppings:
-        description += " pizza with "+ ", ".join(pizza.toppings)
+        description += " pizza with " + ", ".join(pizza.toppings)
     else:
         description += " plain pizza"
     print(f"A {description}")
@@ -24,17 +25,17 @@ def print_pizza(pizza):
 
 
 if __name__ == "__main__":
-    pizza = Pizza('small')
+    pizza = Pizza(SMALL)
     pizza.addTopping("mushroom")
     pizza.addTopping("tomato")
     pizza.addTopping("pinapple")
     print_pizza(pizza)
 
     # a plain pizza
-    pizza2 = Pizza("medium")
+    pizza2 = Pizza(MEDIUM)
     print_pizza(pizza2)
 
     # pizza with only one topping
-    pizza3 = Pizza("large")
+    pizza3 = Pizza(LARGE)
     pizza3.addTopping("seafood")
     print_pizza(pizza3)
