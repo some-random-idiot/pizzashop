@@ -72,17 +72,17 @@ In the Pizza class replace 'small', 'medium', and 'large" with named constants. 
     - Pycharm: right-click, Refactor -> Rename
     - Pydev: "Refactoring" menu -> Rename
 
-2. Did the IDE **also** rename `getPrice` in `print_pizza()`?
+2. Did the IDE **also** rename `getPrice` in `order_pizza()`?
     - VSCode: no
     - Pycharm: yes. Notification of dynamic code in preview.
     - Pydev: yes (lucky guess)
-    - This is a limitation of tools for dynamic languages. The tool can't be *sure* that the "pizza" parameter in `print_pizza` is *really* a Pizza.  To help it, use type annotations.
+    - This is a limitation of tools for dynamic languages. The tool can't be *sure* that the "pizza" parameter in `order_pizza` is *really* a Pizza.  To help it, use type annotations.
 
 3. Undo the refactoring, so you have original `getPrice`.
 
 4. Add a type annotation in pizzashop.py so the IDE knows that parameter is *really* a Pizza: 
    ```python
-   def print_pizza(pizza: Pizza):
+   def order_pizza(pizza: Pizza):
    ```
     - Then do Refactoring -> Rename (in pizza.py) again.
     - Does the IDE change `getPrice` to `get_price` in pizzashop.py also?
@@ -98,7 +98,7 @@ In the Pizza class replace 'small', 'medium', and 'large" with named constants. 
 
 > Perform refactorings in small steps. In this case, we extract a method first, then move it to a better place.
 
-`print_pizza` creates a string `description` to describe the pizza.  That is a poor location for this because:
+`order_pizza` creates a string `description` to describe the pizza.  That is a poor location for this because:
 1. the description could be needed elsewhere in the application
 2. it relies on info about a Pizza that only the Pizza knows.
 
@@ -106,7 +106,7 @@ Therefore, it should be the Pizza's job to describe itself.  This is also known 
 
 Try an *Extract Method* refactoring, followed by *Move Method*.
 
-1. **Select** these statements in `print_pizza` that create the description:
+1. **Select** these statements in `order_pizza` that create the description:
    ```python
     description = pizza.size
     if pizza.toppings:
@@ -119,7 +119,7 @@ Try an *Extract Method* refactoring, followed by *Move Method*.
     - PyCharm: right click -> Refactor -> Extract -> Method
     - PyCharm correctly suggests that "pizza" should be parameter, and it returns the description. (correct!)
     - PyDev: Refactoring menu -> Extract method.  PyDev asks you if pizza should a parameter (correct), but the new method does not return anything.  Fix it.
-    - All IDE: after refactoring, move the two comment lines from `print_pizza` to `describe` as shown here:
+    - All IDE: after refactoring, move the two comment lines from `order_pizza` to `describe` as shown here:
     ```python
     def describe(pizza):
         # create printable description of the pizza such as
@@ -152,16 +152,16 @@ Try an *Extract Method* refactoring, followed by *Move Method*.
             description += " plain pizza"
         return description
     ```
-4. Back in `pizzashop.py`, modify the `print_pizza` to get the description from Pizza:
+4. Back in `pizzashop.py`, modify the `order_pizza` to get the description from Pizza:
     ```python
-    def print_pizza(pizza):
+    def order_pizza(pizza):
         description = str(pizza)
         print(f"A {descripton}")
         print("Price:", pizza.get_price())
     ```
 5. **Eliminate Temp Variable** The code is now so simple that we don't need the `description` variable.  Eliminate it:
     ```python
-    def print_pizza(pizza)
+    def order_pizza(pizza)
         print(f"A {str(pizza)}")
         print("Price:", pizza.get_price())
     ```
