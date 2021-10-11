@@ -18,17 +18,21 @@ def print_pizza(pizza):
 
 
 if __name__ == "__main__":
-    pizza = Pizza(SMALL)
+    pizza = Pizza(PizzaSize.small)
     pizza.add_topping("mushroom")
     pizza.add_topping("tomato")
     pizza.add_topping("pinapple")
     print_pizza(pizza)
 
     # a plain pizza
-    pizza2 = Pizza(MEDIUM)
+    pizza2 = Pizza(PizzaSize.medium)
     print_pizza(pizza2)
 
     # pizza with only one topping
-    pizza3 = Pizza(LARGE)
+    pizza3 = Pizza(PizzaSize.large)
     pizza3.add_topping("seafood")
     print_pizza(pizza3)
+
+    # very big pizza
+    pizza4 = Pizza(PizzaSize.mega)
+    print_pizza(pizza4)
