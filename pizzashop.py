@@ -14,21 +14,21 @@ def print_pizza(pizza):
     Print a description of a pizza, along with its price.
     """
     # create printable description of the pizza such as
-    # "small pizza with muschroom" or "small plain pizza"
+    # "small pizza with mushroom" or "small plain pizza"
     description = pizza.size
     if pizza.toppings:
         description += " pizza with " + ", ".join(pizza.toppings)
     else:
         description += " plain pizza"
     print(f"A {description}")
-    print("Price:", pizza.getPrice())
+    print("Price:", pizza.get_price())
 
 
 if __name__ == "__main__":
     pizza = Pizza(SMALL)
-    pizza.addTopping("mushroom")
-    pizza.addTopping("tomato")
-    pizza.addTopping("pinapple")
+    pizza.add_topping("mushroom")
+    pizza.add_topping("tomato")
+    pizza.add_topping("pinapple")
     print_pizza(pizza)
 
     # a plain pizza
@@ -37,5 +37,5 @@ if __name__ == "__main__":
 
     # pizza with only one topping
     pizza3 = Pizza(LARGE)
-    pizza3.addTopping("seafood")
+    pizza3.add_topping("seafood")
     print_pizza(pizza3)
