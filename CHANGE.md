@@ -42,4 +42,4 @@ and in Pizza.get_price:
 
 ### Benefit of Encapsulation
 
-When the Pizza Shop changes prices, the change to the code are localized: just update the prices in PizzaSize.
+When the Pizza Shop changes prices, the change to the code is localized: just update the prices in PizzaSize.
