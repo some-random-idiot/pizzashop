@@ -34,5 +34,10 @@ if __name__ == "__main__":
     order_pizza(pizza3)
 
     # very big pizza
-    pizza4 = Pizza(PizzaSize.mega)
+    pizza4 = Pizza(PizzaSize.jumbo)
+    pizza4.add_topping("veggie")
     order_pizza(pizza4)
+
+    # very very big pizza
+    pizza5 = Pizza(PizzaSize.mega)
+    order_pizza(pizza5)

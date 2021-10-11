@@ -5,7 +5,8 @@ class PizzaSize(Enum):
     # Enum members written as: name = value
     small = 120
     medium = 200
-    large = 280
+    large = 320
+    jumbo = 450
     mega = 500
 
     @property
